@@ -4,20 +4,18 @@ import {
   Titulo,
   InputContainer
 } from './styles';
-import { useHistory } from 'react-router-dom';
-import { useContext } from 'react';
-import { UsuarioContext } from 'common/contexts/Usuario';
 import {
   Input,
   InputLabel,
   InputAdornment 
 } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
+import { UsuarioContext } from 'common/context/Usuario';
+import { useContext } from 'react';
 
 function Login() {
   const history = useHistory();
   const { nome, setNome, saldo, setSaldo } = useContext(UsuarioContext);
-  
-
   return (
     <Container>
       <Titulo>
@@ -28,9 +26,9 @@ function Login() {
           Nome
         </InputLabel>
         <Input
-          type="text"
           value={nome}
-          onChange={(event) => setNome(event.target.value)}
+          onChange={(evento) => setNome(evento.target.value)}
+          type="text"
         />
       </InputContainer>
       <InputContainer>
@@ -38,21 +36,21 @@ function Login() {
           Saldo
         </InputLabel>
         <Input
-        value={saldo}
-        type="number"
-        onChange={event => setSaldo(Number(event.target.value))}
-        startAdornment={
-          <InputAdornment position="start">
-            R$
-          </InputAdornment>
-        }
-      />
+          type="number"
+          value={saldo}
+          onChange={(evento) => setSaldo(evento.target.value)}
+          startAdornment={
+            <InputAdornment position="start">
+              R$
+            </InputAdornment>
+          }
+        />
       </InputContainer>
       <Button
         variant="contained"
         color="primary"
         disabled={nome.length < 4}
-        onClick={() => history.push('/feira')}
+        onClick={() => history.push("/feira")}
       >
         Avançar
       </Button>
@@ -61,3 +59,4 @@ function Login() {
 };
 
 export default Login;
+/* const {nome, setNome, saldo, setSaldo } = useContext(UsuarioContext); NESTE EXEMPLO USECONTEXT CONSOME A API USAR ESTE MODELO   */
