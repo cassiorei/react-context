@@ -59,4 +59,3 @@ function Login() {
 };
 
 export default Login;
-/* const {nome, setNome, saldo, setSaldo } = useContext(UsuarioContext); NESTE EXEMPLO USECONTEXT CONSOME A API USAR ESTE MODELO   */

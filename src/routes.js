@@ -3,26 +3,31 @@ import Feira from "pages/Feira";
 import Login from "pages/Login";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { UsuarioProvider } from 'common/context/Usuario';
+import { CarrinhoProvider } from 'common/context/Carrinho';
+import { PagamentoProvider } from "common/context/Pagamento";
 
 function Router() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/">
-          <UsuarioProvider>
+        <UsuarioProvider>
+          <Route exact path="/">
             <Login />
-          </UsuarioProvider>
-        </Route>
-        <Route path="/feira">
-          <Feira />
-        </Route>
-        <Route path="/carrinho">
-          <Carrinho />
-        </Route>
+          </Route>
+          <CarrinhoProvider>
+            <Route path="/feira">
+              <Feira />
+            </Route>
+            <PagamentoProvider>
+              <Route path="/carrinho">
+                <Carrinho />
+              </Route>
+            </PagamentoProvider>
+          </CarrinhoProvider>
+        </UsuarioProvider>
       </Switch>
     </BrowserRouter>
   )
 }
 
 export default Router;
-/* esta propriedade dentro nome={nome }SERIA A PROPIS <Login nome={nome} setnome={setnome}/>   */
